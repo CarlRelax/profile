@@ -9,8 +9,11 @@ separate configs of cpp and python
   3. In the CommandLine, typing `nvim-cpp` or `nvim-py`, and you can use the lazynvim with cpp and py configs separated 
 
 # tmux
-  1. move .tmux.conf to ~/.tmux.conf
+  1. move tmux.conf to ~/.tmux.conf
   2. Don't forget install TPM(Tmux Plugins Manager)
   3. Press C-Space + I to Install Plugins in the tmux config file
   4. Press C-r to source config file
 
+# zsh
+  1. move zshrc to ~/.zshrc
+  2. source ~/.zshrc
