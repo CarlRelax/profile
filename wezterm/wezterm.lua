@@ -39,7 +39,7 @@ config.background = {
 	},
 	{
 		source = {
-			Color = "#585c65",
+			Color = "#000000",
 		},
 		width = "100%",
 		height = "100%",
