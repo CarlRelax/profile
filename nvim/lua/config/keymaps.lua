@@ -83,17 +83,19 @@ end)
 map("n", "<leader>qs", function()
   require("persistence").load()
 end, { desc = "Load Current Session" }) -- load the session for the current directory
-vim.keymap.set("n", "<leader>qS", function()
+map("n", "<leader>qS", function()
   require("persistence").select()
 end, { desc = "Select Session" }) -- select a session to load
-vim.keymap.set("n", "<leader>ql", function()
+map("n", "<leader>ql", function()
   require("persistence").load({ last = true })
 end, { desc = "Load Last Session" }) -- load the last session
-vim.keymap.set("n", "<leader>qd", function()
+map("n", "<leader>qd", function()
   require("persistence").stop()
 end, { desc = "Quit Without Session" }) -- stop Persistence => session won't be saved on exit
---map("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
---map("n", "<c-n>", "<Plug>(YankyNextEntry)")
+-- cancel search highlight
+map("n", "<Esc>", function()
+  vim.cmd("nohlsearch")
+end, { silent = true })
 -- treesitter-textobjects
 -- selection
 -- map({"x","o"}, "af", function()
