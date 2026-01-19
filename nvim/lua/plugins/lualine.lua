@@ -1,8 +1,8 @@
--- Set lualine as statusline
+-- Set lualine.as statusline
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    -- Adapted from: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/themes/onedark.lua
+    -- Adapted from: https://github.com/nvim-lualine.lualine.nvim/blob/master/lua/lualine.themes/onedark.lua
     local colors = {
       blue = '#61afef',
       green = '#98c379',
@@ -45,18 +45,18 @@ return {
       nord = 'nord',
     }
 
-    local hide_in_width = function()
-      return vim.fn.winwidth(0) > 100
-    end
+    -- local hide_in_width = function()
+    --   return vim.fn.winwidth(0) > 100
+    -- end
 
     local mode = {
       'mode',
       fmt = function(str)
-        if hide_in_width() then
-          return ' ' .. str
-        else
-          return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
-        end
+        -- if hide_in_width() then
+        return ' ' .. str
+        -- else
+        --   return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
+        -- end
       end,
     }
 
@@ -64,6 +64,21 @@ return {
       'filename',
       file_status = true, -- displays file status (readonly status, modified status)
       path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+    }
+
+    local buffers = {
+      'buffers',
+      mode = 0,
+      show_filename_only = true,
+      show_modified_status = true,
+      buffers_color = {
+        active = 'lualine.c_normal',
+        -- active = { bg = '#ff0000', gui = 'bold' },
+        inactive = { fg = '#a0a0a0', gui = 'bold' },
+        -- inactive = { 'lualine.c_inactive' },
+      },
+    --   separator = { left = '', right = '' },
+    --   padding = 1,
     }
 
     local diagnostics = {
@@ -74,14 +89,14 @@ return {
       colored = false,
       update_in_insert = false,
       always_visible = false,
-      cond = hide_in_width,
+    --   cond = hide_in_width,
     }
 
     local diff = {
       'diff',
       colored = false,
       symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
-      cond = hide_in_width,
+      -- cond = hide_in_width,
     }
 
     require('lualine').setup {
@@ -95,12 +110,13 @@ return {
         component_separators = { left = '', right = '' },
         disabled_filetypes = { 'alpha', 'neo-tree', 'Avante' },
         always_divide_middle = true,
+        globalstatus = true,
       },
       sections = {
         lualine_a = { mode },
         lualine_b = { 'branch' },
         lualine_c = { filename },
-        lualine_x = { diagnostics, diff, { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width } },
+        lualine_x = { diagnostics, diff,  'encoding', 'filetype' },
         lualine_y = { 'location' },
         lualine_z = { 'progress' },
       },
