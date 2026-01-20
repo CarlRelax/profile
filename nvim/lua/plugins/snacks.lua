@@ -63,13 +63,13 @@ return {
       end,
       desc = "Buffers",
     },
-    {
-      "<leader>:",
-      function()
-        Snacks.picker.command_history()
-      end,
-      desc = "Command History",
-    },
+    -- {
+    --   "<leader>:",
+    --   function()
+    --     Snacks.picker.command_history()
+    --   end,
+    --   desc = "Command History",
+    -- },
     {
       "<leader>n",
       function()
@@ -272,27 +272,27 @@ return {
       end,
       desc = "Command History",
     },
-    {
-      "<leader>sC",
-      function()
-        Snacks.picker.commands()
-      end,
-      desc = "Commands",
-    },
-    {
-      "<leader>sd",
-      function()
-        Snacks.picker.diagnostics()
-      end,
-      desc = "Diagnostics",
-    },
-    {
-      "<leader>sD",
-      function()
-        Snacks.picker.diagnostics_buffer()
-      end,
-      desc = "Buffer Diagnostics",
-    },
+    -- {
+    --   "<leader>sC",
+    --   function()
+    --     Snacks.picker.commands()
+    --   end,
+    --   desc = "Commands",
+    -- },
+    -- {
+    --   "<leader>sd",
+    --   function()
+    --     Snacks.picker.diagnostics()
+    --   end,
+    --   desc = "Diagnostics",
+    -- },
+    -- {
+    --   "<leader>sD",
+    --   function()
+    --     Snacks.picker.diagnostics_buffer()
+    --   end,
+    --   desc = "Buffer Diagnostics",
+    -- },
     {
       "<leader>sh",
       function()
@@ -363,13 +363,13 @@ return {
       end,
       desc = "Quickfix List",
     },
-    {
-      "<leader>sR",
-      function()
-        Snacks.picker.resume()
-      end,
-      desc = "Resume",
-    },
+    -- {
+    --   "<leader>sR",
+    --   function()
+    --     Snacks.picker.resume()
+    --   end,
+    --   desc = "Resume",
+    -- },
     {
       "<leader>su",
       function()
@@ -442,13 +442,13 @@ return {
       end,
       desc = "LSP Symbols",
     },
-    {
-      "<leader>sS",
-      function()
-        Snacks.picker.lsp_workspace_symbols()
-      end,
-      desc = "LSP Workspace Symbols",
-    },
+    -- {
+    --   "<leader>sS",
+    --   function()
+    --     Snacks.picker.lsp_workspace_symbols()
+    --   end,
+    --   desc = "LSP Workspace Symbols",
+    -- },
     -- Other
     {
       "<leader>z",
@@ -517,7 +517,7 @@ return {
     {
       "<c-`>",
       function()
-        Snacks.terminal().toggle()
+        Snacks.terminal()
       end,
       desc = "Toggle Terminal",
     },
