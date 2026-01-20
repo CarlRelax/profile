@@ -9,7 +9,7 @@ autocmd("FileType", {
   callback = function()
     -- print('innnnnnnnn')
     vim.treesitter.start()
-    vim.lsp.enable({ "clangd", "lua_ls", "pyright" })
+    -- vim.lsp.enable({ "clangd", "lua_ls", "pyright" })
     vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
     vim.wo[0][0].foldmethod = "expr"
   end,
@@ -107,17 +107,3 @@ autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
-
--- -- Auto Hide status bar in dashboard
--- autocmd("User", {
---   pattern = "SnackDashboardOpend",
---   callback = function()
---     require("lualine").hide()
---   end,
--- })
--- autocmd("BufLeave", {
---   pattern = "SnackDashboardClosed",
---   callback = function()
---     require("lualine").hide({ unhide = true })
---   end,
--- })

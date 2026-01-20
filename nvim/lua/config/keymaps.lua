@@ -24,6 +24,9 @@ map(
   ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv",
   { desc = "Move Up", silent = true, noremap = true }
 )
+map("n", "[c", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, { desc = "Go To Context [TS context]", silent = true })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All", silent = true, noremap = true })
@@ -96,6 +99,10 @@ end, { desc = "Quit Without Session" }) -- stop Persistence => session won't be 
 map("n", "<Esc>", function()
   vim.cmd("nohlsearch")
 end, { silent = true })
+-- lsp
+map("n", "<leader>cn", function()
+  require("nvim-navbuddy").open()
+end, { desc = "Open NavBuddy", silent = true })
 -- treesitter-textobjects
 -- selection
 -- map({"x","o"}, "af", function()

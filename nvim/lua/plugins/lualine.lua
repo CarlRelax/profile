@@ -2,7 +2,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "BufReadPre",
-  config = function()
+  config = function(opts, bufnr)
     -- Eviline config for lualine
     -- Author: shadmansaleh
     -- Credit: glepnir
@@ -174,8 +174,16 @@ local colors = {
         return "%="
       end,
     })
-
+    local navic = require("nvim-navic")
     ins_left({
+      function()
+        if navic.is_available then
+          return navic.get_location()
+        end
+      end,
+    })
+
+    ins_right({
       -- Lsp server name .
       function()
         local msg = "No Active Lsp"
