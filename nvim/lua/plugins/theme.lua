@@ -16,6 +16,7 @@ return {
         }
         hl.StatusLine = { bg = "none" }
         hl.StatusLineNC = { bg = "none" }
+        hl.TreesitterContext = { bg = "none" }
       end,
     },
     config = function(_, opts)

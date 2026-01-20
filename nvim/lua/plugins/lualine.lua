@@ -139,6 +139,7 @@ local colors = {
       path = 1,
       cond = conditions.buffer_not_empty,
       color = { fg = colors.magenta, gui = "bold" },
+      symbols = { readonly = "󰌾 " },
     })
 
     ins_left({
