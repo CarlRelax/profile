@@ -68,15 +68,6 @@ return {
   {
     "SmiteshP/nvim-navic",
     dependencies = "neovim/nvim-lspconfig",
-    -- opts = {
-    --   highlight = true,
-    --   separator = ">",
-    --   depth = 3,
-    --   lsp = {
-    --     auto_attach = true,
-    --   },
-    --   click = true,
-    -- },
     config = function()
       require("nvim-navic").setup({
         highlight = true,

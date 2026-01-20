@@ -27,6 +27,8 @@ return {
           },
         },
       },
+      clangd = {},
+      pyright = {},
       -- clangd = {
       --   on_attach = function(client, bufnr)
       --     require("nvim-navic").attach(client, bufnr)
@@ -64,6 +66,9 @@ return {
       on_attach = on_attach,
     }
     vim.lsp.config["pyright"] = {
+      on_attach = on_attach,
+    }
+    vim.lsp.config["clangd"] = {
       on_attach = on_attach,
     }
     -- vim.lsp.config("lus_ls", {

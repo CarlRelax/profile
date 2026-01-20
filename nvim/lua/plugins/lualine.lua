@@ -2,7 +2,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "BufReadPre",
-  config = function(opts, bufnr)
+  config = function()
     -- Eviline config for lualine
     -- Author: shadmansaleh
     -- Credit: glepnir
@@ -127,15 +127,24 @@ local colors = {
     })
 
     ins_left({
-      -- filesize component
-      "filesize",
-      cond = conditions.buffer_not_empty,
+      "filetype",
+      colored = true, -- Displays filetype icon in color if set to true
+      icon_only = false, -- Display only an icon for filetype
+      icon = { align = "right" }, -- Display filetype icon on the right hand side
     })
 
     ins_left({
       "filename",
+      newfile_status = true,
+      path = 1,
       cond = conditions.buffer_not_empty,
       color = { fg = colors.magenta, gui = "bold" },
+    })
+
+    ins_left({
+      -- filesize component
+      "filesize",
+      cond = conditions.buffer_not_empty,
     })
 
     ins_left({
