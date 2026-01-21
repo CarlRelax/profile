@@ -133,6 +133,20 @@ map("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- DAP
+map("n", "<F5>", require("dap").continue, { desc = "DAP Continue" })
+map("n", "<F6>", require("dap").step_over, { desc = "DAP Step Over" })
+map("n", "<F7>", require("dap").step_into, { desc = "DAP Step Into" })
+map("n", "<F8>", require("dap").step_out, { desc = "DAP Step Out" })
+
+map("n", "<Leader>db", require("dap").toggle_breakpoint, { desc = "DAP Toggle Breakpoint" })
+map("n", "<Leader>dB", function()
+  require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { desc = "DAP Conditional Breakpoint" })
+
+map("n", "<Leader>dr", require("dap").repl.open, { desc = "DAP REPL" })
+map("n", "<Leader>dl", require("dap").run_last, { desc = "DAP Run Last" })
+
 -- NOTE for test
 -- map("n", "<leader>t", function()
 --   Snacks.input({ prompt = "macro register (single lowercase letters only)" }, function(value)
