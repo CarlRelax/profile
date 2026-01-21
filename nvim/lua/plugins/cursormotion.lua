@@ -1,5 +1,6 @@
 return {
   "sphamba/smear-cursor.nvim",
+  event = "VimEnter",
   opts = {
     cursor_color = "#cfc9a5",
     particles_enabled = false,

@@ -4,7 +4,7 @@ return {
   ---@type oil.SetupOpts
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   -- lazy = false,
-  event = "VeryLazy",
+  event = "VimEnter",
   opts = {
     -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
     -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.

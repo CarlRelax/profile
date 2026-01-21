@@ -1,5 +1,6 @@
 return {
   "chrisgrieser/nvim-recorder",
+  event = "VimEnter",
   opts = {
     slots = { "a", "b", "c" },
     dynamicSlots = "rotate",
