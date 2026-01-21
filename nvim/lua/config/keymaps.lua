@@ -103,6 +103,17 @@ end, { silent = true })
 map("n", "<leader>cn", function()
   require("nvim-navbuddy").open()
 end, { desc = "Open NavBuddy", silent = true })
+
+-- NOTE for test
+-- map("n", "<leader>t", function()
+--   Snacks.input({ prompt = "macro register (single lowercase letters only)" }, function(value)
+--     if value:match("^%[a-z]$") ~= nil then
+--       print(value)
+--     else
+--       Snacks.notify.error("single lowercase letters only")
+--     end
+--   end)
+-- end, { desc = "test record", silent = true })
 -- treesitter-textobjects
 -- selection
 -- map({"x","o"}, "af", function()

@@ -192,7 +192,12 @@ local colors = {
         end
       end,
     })
-
+    ins_right({
+      require("recorder").displaySlots,
+    })
+    ins_right({
+      require("recorder").recordingStatus,
+    })
     ins_right({
       -- Lsp server name .
       function()
