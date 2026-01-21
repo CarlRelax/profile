@@ -1,7 +1,7 @@
 return {
   {
     "nvim-mini/mini.ai",
-    event = "VeryLazy",
+    event = "BufReadPost",
     dependencies = {
       { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
       "nvim-treesitter/nvim-treesitter",
@@ -62,6 +62,7 @@ return {
   },
   {
     "nvim-mini/mini.hipatterns",
+    event = "BufReadPost",
     version = false,
     opts = {},
     config = function()

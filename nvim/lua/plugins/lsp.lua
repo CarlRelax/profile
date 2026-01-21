@@ -6,16 +6,16 @@ return {
   dependencies = {
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
-    {
-      "SmiteshP/nvim-navbuddy",
-      dependencies = {
-        "SmiteshP/nvim-navic",
-        "MunifTanjim/nui.nvim",
-      },
-      opts = { lsp = { auto_attach = true } },
-    },
+    -- {
+    --   "SmiteshP/nvim-navbuddy",
+    --   dependencies = {
+    --     "SmiteshP/nvim-navic",
+    --     "MunifTanjim/nui.nvim",
+    --   },
+    --   opts = { lsp = { auto_attach = true } },
+    -- },
   },
-  event = "VeryLazy",
+  event = "BufReadPre",
   opts = {
     servers = {
       lua_ls = {

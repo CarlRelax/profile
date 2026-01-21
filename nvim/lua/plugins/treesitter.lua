@@ -80,6 +80,15 @@ return {
       })
     end,
   },
+  {
+    "SmiteshP/nvim-navbuddy",
+    event = "BufReadPost",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = { lsp = { auto_attach = true } },
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter-textobjects",
   -- 	event = "VeryLazy",
