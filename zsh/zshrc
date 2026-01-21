@@ -6,6 +6,7 @@ export LC_CTYPE=en_US.utf8 # 可选：单独指定字符编码类型
 alias ls="lsd --icon=always"
 alias ll="lsd -l --icon=always" # 显示详细信息
 alias la="lsd -a --icon=always" # 显示隐藏文件
+alias nv="nvim"
 
 if [[ $- == *i* ]] && [[ -z "$TMUX" ]] && [[ -z "$STY" ]];then
   tmux new-session -A -s main
