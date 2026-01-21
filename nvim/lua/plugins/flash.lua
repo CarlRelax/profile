@@ -1,6 +1,6 @@
 return {
   "folke/flash.nvim",
-  event = "VeryLazy",
+  event = "BufReadPost",
   ---@type Flash.Config
   opts = {
     jump = {
