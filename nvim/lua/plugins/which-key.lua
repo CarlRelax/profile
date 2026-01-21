@@ -15,7 +15,7 @@ return {
     spec = {
       {
         mode = { "n", "x" },
-        -- { "<leader><tab>", group = "tabs" },
+        { "<leader><tab>", group = "tabs" },
         { "<leader>c", group = "code" },
         -- { "<leader>l", group = "lsp" },
         -- { "<leader>ls", group = "lsp symbol" },

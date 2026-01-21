@@ -80,4 +80,23 @@ return {
       })
     end,
   },
+  {
+    "nvim-mini/mini.surround",
+    config = function()
+      require("mini.surround").setup({
+        n_lines = 100,
+        mappings = {
+          add = "fa", -- Add surrounding in Normal and Visual modes
+          delete = "fd", -- Delete surrounding
+          find = "ff", -- Find surrounding (to the right)
+          find_left = "fF", -- Find surrounding (to the left)
+          highlight = "fh", -- Highlight surrounding
+          replace = "fr", -- Replace surrounding
+
+          suffix_last = "[",
+          suffix_next = "]",
+        },
+      })
+    end,
+  },
 }
