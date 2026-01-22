@@ -3,7 +3,7 @@ return {
   event = "VimEnter",
   opts = {
     cursor_color = "#cfc9a5",
-    particles_enabled = false,
+    particles_enabled = true,
     stiffness = 0.5,
     trailing_stiffness = 0.2,
     trailing_exponent = 5,
@@ -21,5 +21,6 @@ return {
     particle_damping = 0.15,
     particle_gravity = -50,
     min_distance_emit_particles = 0,
+    -- time_interval = 7,
   },
 }

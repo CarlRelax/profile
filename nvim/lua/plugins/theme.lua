@@ -25,9 +25,4 @@ return {
       vim.cmd("highlight TreesitterContextBottom gui=underline guisp=Grey")
     end,
   },
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  -- },
 }

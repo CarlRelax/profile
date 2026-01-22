@@ -4,7 +4,7 @@ local map = vim.keymap.set
 -- windows
 map("n", "<leader>w", "<C-W>", { desc = "Window Settings", silent = true, noremap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Horizontal", silent = true, noremap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split Window Vertical", silent = true, noremap = true })
+map("n", "<leader>\\", "<C-W>v", { desc = "Split Window Vertical", silent = true, noremap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Current Window", silent = true, noremap = true })
 
 -- Move Lines

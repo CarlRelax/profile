@@ -83,6 +83,7 @@ return {
   },
   {
     "nvim-mini/mini.surround",
+    event = "BufReadPost",
     config = function()
       require("mini.surround").setup({
         n_lines = 100,
