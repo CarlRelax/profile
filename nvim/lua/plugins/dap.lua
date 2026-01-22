@@ -71,8 +71,8 @@ return {
       local mason_path = vim.fn.stdpath("data") .. "/mason"
       dap.adapters.python = {
         type = "executable",
-        pythonPath = mason_path .. "/packages/debugpy/venv/bin/python", -- MacOS
-        -- pythonPath = mason_path .. "/packages/debugpy/venv/Scripts/python",  -- Windows
+        command = mason_path .. "/packages/debugpy/venv/bin/python", -- MacOS
+        -- command = mason_path .. "/packages/debugpy/venv/Scripts/python",  -- Windows
         args = { "-m", "debugpy.adapter" },
       }
 
