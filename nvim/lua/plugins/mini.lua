@@ -88,12 +88,12 @@ return {
       require("mini.surround").setup({
         n_lines = 100,
         mappings = {
-          add = "fa", -- Add surrounding in Normal and Visual modes
-          delete = "fd", -- Delete surrounding
-          find = "ff", -- Find surrounding (to the right)
-          find_left = "fF", -- Find surrounding (to the left)
-          highlight = "fh", -- Highlight surrounding
-          replace = "fr", -- Replace surrounding
+          add = "\\a", -- Add surrounding in Normal and Visual modes
+          delete = "\\d", -- Delete surrounding
+          find = "\\f", -- Find surrounding (to the right)
+          find_left = "\\F", -- Find surrounding (to the left)
+          highlight = "\\h", -- Highlight surrounding
+          replace = "\\r", -- Replace surrounding
 
           suffix_last = "[",
           suffix_next = "]",

@@ -89,33 +89,4 @@ return {
     },
     opts = { lsp = { auto_attach = true } },
   },
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter-textobjects",
-  -- 	event = "VeryLazy",
-  -- 	branch = "main",
-  -- 	version = false,
-  -- 	dependencies = {
-  -- 		"nvim-treesitter/nvim-treesitter",
-  -- 	},
-  -- 	config = function()
-  -- 		require("nvim-treesitter.config").setup({
-  -- 			textobjects = {
-  -- 				select = {
-  -- 					enable = true,
-  -- 					lookahead = true,
-  -- 					selection_modes = {
-  -- 						["@parameter.outer"] = "v",
-  -- 						["@function.outer"] = "V",
-  -- 						["@class.outer"] = "<c-v>",
-  -- 					},
-  -- 					include_surrounding_whiterspace = false,
-  -- 				},
-  -- 				move = {
-  -- 					enable = true,
-  -- 					set_jumps = true,
-  -- 				},
-  -- 			},
-  -- 		})
-  -- 	end,
-  -- },
 }

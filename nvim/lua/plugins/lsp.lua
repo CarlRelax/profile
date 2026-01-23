@@ -3,7 +3,6 @@ return {
   dependencies = {
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
-    "saghen/blink.cmp",
     -- {
     --   "SmiteshP/nvim-navbuddy",
     --   dependencies = {
@@ -37,21 +36,21 @@ return {
       navic.attach(client, bufnr)
       navbuddy.attach(client, bufnr)
     end
-    -- local lspconfig = require("lspconfig")
     for server, config in pairs(opts.servers) do
       -- passing config.capabilities to blink.cmp merges with the capabilities in your
       -- `opts[server].capabilities, if you've defined it
-      -- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
       -- lspconfig[server].setup(config)
       vim.lsp.config[server] = {
         on_attach = on_attach,
-        -- config = config,
+        config = config,
       }
     end
     require("mason").setup()
     vim.diagnostic.config({
       virtual_text = true,
     })
+
     -- local navic = require("nvim-navic")
     -- require("lspconfig").lua_ls.setup({
     --   on_attach = on_attach,
