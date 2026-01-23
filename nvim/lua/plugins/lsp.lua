@@ -1,11 +1,17 @@
---  TODO:
---
---  use lsp: cpp lua python
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
+    "saghen/blink.cmp",
+    -- {
+    --   "SmiteshP/nvim-navbuddy",
+    --   dependencies = {
+    --     "SmiteshP/nvim-navic",
+    --     "MunifTanjim/nui.nvim",
+    --   },
+    --   opts = { lsp = { auto_attach = true } },
+    -- },
   },
   event = "BufReadPre",
   opts = {
@@ -21,29 +27,28 @@ return {
       },
       clangd = {},
       pyright = {},
-      -- clangd = {
-      --   on_attach = function(client, bufnr)
-      --     require("nvim-navic").attach(client, bufnr)
-      --   end,
-      -- },
     },
   },
-  config = function()
+  config = function(_, opts)
     local navbuddy = require("nvim-navbuddy")
     local navic = require("nvim-navic")
+    -- local capabilities = require("blink-cmp").get_lsp_capabilities()
     local on_attach = function(client, bufnr)
       navic.attach(client, bufnr)
       navbuddy.attach(client, bufnr)
     end
+    -- local lspconfig = require("lspconfig")
+    for server, config in pairs(opts.servers) do
+      -- passing config.capabilities to blink.cmp merges with the capabilities in your
+      -- `opts[server].capabilities, if you've defined it
+      -- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      -- lspconfig[server].setup(config)
+      vim.lsp.config[server] = {
+        on_attach = on_attach,
+        -- config = config,
+      }
+    end
     require("mason").setup()
-    -- vim.lsp.config['clangd'] = {
-    --   cmd = { 'clangd' },
-    --   -- filetypes = { 'cpp', 'c', 'h'},
-    -- }
-    -- vim.lsp.config['lua-language-server'] = {
-    --   cmd = { ''}
-    -- }
-    -- vim.lsp.enable('clangd')
     vim.diagnostic.config({
       virtual_text = true,
     })
@@ -54,15 +59,18 @@ return {
     -- require("lspconfig").pyright.setup({
     --   on_attach = on_attach,
     -- })
-    vim.lsp.config["lua_ls"] = {
-      on_attach = on_attach,
-    }
-    vim.lsp.config["pyright"] = {
-      on_attach = on_attach,
-    }
-    vim.lsp.config["clangd"] = {
-      on_attach = on_attach,
-    }
+    -- vim.lsp.config["lua_ls"] = {
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- }
+    -- vim.lsp.config["pyright"] = {
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- }
+    -- vim.lsp.config["clangd"] = {
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- }
     -- vim.lsp.config("lus_ls", {
     --   on_attach = on_attach,
     -- function(client, bufnr)
@@ -71,19 +79,4 @@ return {
     -- })
     vim.lsp.enable({ "clangd", "lua_ls", "pyright" })
   end,
-  --    setup = {},
-  -- config = function(_, opts)
-  --   require("mason").setup(opts)
-  --   local registry = require "mason-registry"
-  --
-  --   local success, package = pcall(registry.get_package, "lua-language-server")
-  --   if success and not package:is_installed() then
-  --     package:install()
-  --   end
-  --
-  --   local nvim_lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig["lua-language-server"]
-  --   vim.lsp.config(nvim_lsp, {})
-  --
-  --   vim.cmd("LspStart")
-  -- end,
 }

@@ -1,6 +1,6 @@
 return {
   "saghen/blink.cmp",
-  event = { "InsertEnter", "CmdlineEnter" },
+  event = { "BufReadPost", "CmdlineEnter" },
   -- optional: provides snippets for the snippet source
   dependencies = { "rafamadriz/friendly-snippets" },
 
@@ -30,7 +30,7 @@ return {
       preset = "none",
       -- ["<C-I>"] = { "show", "show_documentation", "hide_documentation" },
       ["<C-e>"] = { "hide", "fallback" },
-      ["<Space>"] = { "accept", "fallback" },
+      [","] = { "accept", "fallback" },
 
       ["<Tab>"] = { "snippet_forward", "fallback" },
       ["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -58,7 +58,7 @@ return {
       enabled = true,
       -- use 'inherit' to inherit mappings from top level `keymap` config
       keymap = { preset = "inherit" },
-      sources = { "buffer", "cmdline" },
+      sources = { "buffer", "cmdline", "path", "snippets", "lsp" },
 
       -- OR explicitly configure per cmd type
       -- This ends up being equivalent to above since the sources disable themselves automatically
@@ -93,6 +93,13 @@ return {
           auto_show = function(ctx, _)
             return ctx.mode == "cmdline"
           end,
+          draw = {
+            columns = {
+              { "kind_icon", "kind", gap = 1 },
+              { "label", "label_description", gap = 1 },
+              { "source_name" },
+            },
+          },
         },
         -- Displays a preview of the selected item on the current line
         ghost_text = { enabled = true },
@@ -107,6 +114,20 @@ return {
           name = "lazydev",
           module = "lazydev.integrations.blink",
           score_offset = 100,
+        },
+        lsp = {
+          name = "lsp",
+          enabled = true,
+          fallbacks = {},
+        },
+        snippets = {
+          name = "snippets",
+          opts = {
+            friendly_snippets = true,
+          },
+        },
+        buffer = {
+          name = "buffer",
         },
       },
     },

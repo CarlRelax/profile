@@ -14,11 +14,11 @@ return {
         shade = 7,
       },
     },
-    modes = {
-      search = {
-        enabled = true,
-      },
-    },
+    -- modes = {
+    --   search = {
+    --     enabled = true,
+    --   },
+    -- },
   },
   keys = {
     {
