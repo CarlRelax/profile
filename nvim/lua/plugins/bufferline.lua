@@ -8,7 +8,7 @@ return {
       indicator = {
         style = "underline",
       },
-      -- separator_style = { '', '' },
+      separator_style = "thick",
       always_show_bufferline = true,
       themable = true,
       diagnostics = "nvim_lsp",

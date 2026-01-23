@@ -3,14 +3,6 @@ return {
   dependencies = {
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
-    -- {
-    --   "SmiteshP/nvim-navbuddy",
-    --   dependencies = {
-    --     "SmiteshP/nvim-navic",
-    --     "MunifTanjim/nui.nvim",
-    --   },
-    --   opts = { lsp = { auto_attach = true } },
-    -- },
   },
   event = "BufReadPre",
   opts = {
@@ -51,31 +43,6 @@ return {
       virtual_text = true,
     })
 
-    -- local navic = require("nvim-navic")
-    -- require("lspconfig").lua_ls.setup({
-    --   on_attach = on_attach,
-    -- })
-    -- require("lspconfig").pyright.setup({
-    --   on_attach = on_attach,
-    -- })
-    -- vim.lsp.config["lua_ls"] = {
-    --   on_attach = on_attach,
-    --   capabilities = capabilities,
-    -- }
-    -- vim.lsp.config["pyright"] = {
-    --   on_attach = on_attach,
-    --   capabilities = capabilities,
-    -- }
-    -- vim.lsp.config["clangd"] = {
-    --   on_attach = on_attach,
-    --   capabilities = capabilities,
-    -- }
-    -- vim.lsp.config("lus_ls", {
-    --   on_attach = on_attach,
-    -- function(client, bufnr)
-    --   navic.attach(client, bufnr)
-    -- end,
-    -- })
     vim.lsp.enable({ "clangd", "lua_ls", "pyright" })
   end,
 }
