@@ -17,7 +17,10 @@ return {
         hl.StatusLine = { bg = "none" }
         hl.StatusLineNC = { bg = "none" }
         hl.TreesitterContext = { bg = "none" }
-        hl.SignColumn = { fg = "#ff0000" }
+        hl.SignColumn = { fg = "#da84cc" }
+        hl.LineNrBelow = { fg = "#acacd2" }
+        hl.LineNrAbove = { fg = "#c9d9ca" }
+        hl.TreesitterContextLineNumber = { fg = "#a8a9fa" }
       end,
     },
     config = function(_, opts)
