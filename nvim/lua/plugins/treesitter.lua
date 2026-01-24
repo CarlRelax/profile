@@ -63,6 +63,12 @@ return {
         --   end
         -- end,
       })
+
+      -- NOTE TS-Context
+      local map = vim.keymap.set
+      map("n", "[c", function()
+        require("treesitter-context").go_to_context(vim.v.count1)
+      end, { desc = "Go To Context [TS context]", silent = true })
     end,
   },
   {

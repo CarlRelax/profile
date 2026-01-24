@@ -75,3 +75,8 @@ opt.winminwidth = 5 -- Minimum window width
 opt.winborder = "rounded"
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+-- 禁止加载 netrw 核心
+vim.g.loaded_netrw = 1
+
+-- 禁止加载 netrw 的 plugin 层
+vim.g.loaded_netrwPlugin = 1

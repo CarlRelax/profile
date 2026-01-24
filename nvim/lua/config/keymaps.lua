@@ -24,11 +24,6 @@ map(
   { desc = "Move Up", silent = true, noremap = true }
 )
 
--- NOTE TS-Context
-map("n", "[c", function()
-  require("treesitter-context").go_to_context(vim.v.count1)
-end, { desc = "Go To Context [TS context]", silent = true })
-
 -- NOTE quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All", silent = true, noremap = true })
 
@@ -46,32 +41,6 @@ map("i", "jk", "<esc>", { desc = "Exit Current Mode To Normal Mode", silent = tr
 -- NOTE buffers
 map("n", "<A-l>", ":bnext<cr>", { desc = "Switch To Next Buffer", silent = true, noremap = true })
 map("n", "<A-h>", ":bprev<cr>", { desc = "Switch To Last Buffer", silent = true, noremap = true })
-
--- NOTE auto-increase/decrease
-map("n", "<C-a>", function()
-  require("dial.map").manipulate("increment", "normal")
-end)
-map("n", "<C-x>", function()
-  require("dial.map").manipulate("decrement", "normal")
-end)
-map("n", "g<C-a>", function()
-  require("dial.map").manipulate("increment", "gnormal")
-end)
-map("n", "g<C-x>", function()
-  require("dial.map").manipulate("decrement", "gnormal")
-end)
-map("x", "<C-a>", function()
-  require("dial.map").manipulate("increment", "visual")
-end)
-map("x", "<C-x>", function()
-  require("dial.map").manipulate("decrement", "visual")
-end)
-map("x", "g<C-a>", function()
-  require("dial.map").manipulate("increment", "gvisual")
-end)
-map("x", "g<C-x>", function()
-  require("dial.map").manipulate("decrement", "gvisual")
-end)
 
 -- NOTE persistence
 map("n", "<leader>qs", function()
