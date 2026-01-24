@@ -1,6 +1,6 @@
 return {
   "monaqa/dial.nvim",
-  lazy = "BufReadPost",
+  lazy = "VeryLazy",
   opts = {},
   config = function()
     local augend = require("dial.augend")
@@ -13,6 +13,9 @@ return {
         augend.date.alias["%Y/%m/%d"],
         augend.constant.alias.alpha,
         augend.constant.alias.Alpha,
+        augend.hexcolor.new({
+          case = "upper", -- or "lower", "prefer_upper", "prefer_lower", see below
+        }),
       },
       -- only_in_visual = {
       -- 	augend.integer.alias.decimal,
@@ -24,32 +27,5 @@ return {
       -- 	augend.constant.alias.Alpha,
       -- },
     })
-
-    -- NOTE auto-increase/decrease
-    local map = vim.keymap.set
-    map("n", "<C-a>", function()
-      require("dial.map").manipulate("increment", "normal")
-    end)
-    map("n", "<C-x>", function()
-      require("dial.map").manipulate("decrement", "normal")
-    end)
-    map("n", "g<C-a>", function()
-      require("dial.map").manipulate("increment", "gnormal")
-    end)
-    map("n", "g<C-x>", function()
-      require("dial.map").manipulate("decrement", "gnormal")
-    end)
-    map("x", "<C-a>", function()
-      require("dial.map").manipulate("increment", "visual")
-    end)
-    map("x", "<C-x>", function()
-      require("dial.map").manipulate("decrement", "visual")
-    end)
-    map("x", "g<C-a>", function()
-      require("dial.map").manipulate("increment", "gvisual")
-    end)
-    map("x", "g<C-x>", function()
-      require("dial.map").manipulate("decrement", "gvisual")
-    end)
   end,
 }
