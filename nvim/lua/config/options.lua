@@ -11,6 +11,10 @@ opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.cursorcolumn = false
 -- opt.colorcolumn = "80"
+-- 禁止自动注释续行
+-- vim.opt.formatoptions:remove({ "c", "r", "o" })
+
+vim.opt.cursorlineopt = "number" -- 只高亮行号，而不是整行
 opt.expandtab = true -- Use spaces instead of tabs
 opt.fillchars = {
   foldopen = "",

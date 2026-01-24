@@ -31,11 +31,12 @@ return {
     for server, config in pairs(opts.servers) do
       -- passing config.capabilities to blink.cmp merges with the capabilities in your
       -- `opts[server].capabilities, if you've defined it
-      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      -- lspconfig[server].setup(config)
+      -- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
       vim.lsp.config[server] = {
         on_attach = on_attach,
-        config = config,
+        capabilities = capabilities,
       }
     end
     require("mason").setup()
