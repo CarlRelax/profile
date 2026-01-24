@@ -4,6 +4,7 @@ return {
   ---@type oil.SetupOpts
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   -- lazy = false,
+  enabled = false,
   event = "VimEnter",
   opts = {
     -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)

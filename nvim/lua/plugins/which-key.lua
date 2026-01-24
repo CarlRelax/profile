@@ -17,6 +17,7 @@ return {
         mode = { "n", "x" },
         { "<leader><tab>", group = "tabs" },
         { "<leader>c", group = "code" },
+        { "<leader>t", group = "todo" },
         -- { "<leader>l", group = "lsp" },
         -- { "<leader>ls", group = "lsp symbol" },
         -- { "<leader>lw", group = "lsp workspace" },

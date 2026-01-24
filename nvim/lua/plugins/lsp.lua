@@ -23,20 +23,13 @@ return {
   config = function(_, opts)
     local navbuddy = require("nvim-navbuddy")
     local navic = require("nvim-navic")
-    -- local capabilities = require("blink-cmp").get_lsp_capabilities()
     local on_attach = function(client, bufnr)
       navic.attach(client, bufnr)
       navbuddy.attach(client, bufnr)
     end
     for server, config in pairs(opts.servers) do
-      -- passing config.capabilities to blink.cmp merges with the capabilities in your
-      -- `opts[server].capabilities, if you've defined it
-      -- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
       vim.lsp.config[server] = {
         on_attach = on_attach,
-        capabilities = capabilities,
       }
     end
     require("mason").setup()
