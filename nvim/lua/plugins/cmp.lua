@@ -30,7 +30,7 @@ return {
       preset = "none",
       -- ["<C-I>"] = { "show", "show_documentation", "hide_documentation" },
       ["<C-e>"] = { "hide", "fallback" },
-      [","] = { "accept", "fallback" },
+      ["`"] = { "accept", "fallback" },
 
       ["<Tab>"] = { "snippet_forward", "fallback" },
       ["<S-Tab>"] = { "snippet_backward", "fallback" },
