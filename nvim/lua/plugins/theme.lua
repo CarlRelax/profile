@@ -21,6 +21,8 @@ return {
         hl.LineNrBelow = { fg = "#acacd2" }
         hl.LineNrAbove = { fg = "#c9d9ca" }
         hl.TreesitterContextLineNumber = { fg = "#a8a9fa" }
+        hl.LspReferenceText = { bg = "#7479AD" }
+        hl.LspReferenceWrite = { bg = "#737F86" }
       end,
     },
     config = function(_, opts)
