@@ -61,7 +61,8 @@ config.window_padding = {
 config.background = {
 	{
 		source = {
-			File = "/Users/carl/Downloads/【哲风壁纸】卡通-小王子-星星.png",
+			File = "/Users/carl/Downloads/【哲风壁纸】卡通-小王子-星星.png", -- MacOS
+			-- File = "C:\\Users\\Carl\\little-king.png", -- Windows
 		},
 		hsb = {
 			hue = 1.0,
