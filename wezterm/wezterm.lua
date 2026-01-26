@@ -1,18 +1,18 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
+
+-- 全屏
+wezterm.on("gui-startup", function()
+	local tab, pane, window = mux.spawn_window({})
+	window:gui_window():toggle_fullscreen()
+end)
 
 -- 保留config_builder()对象，改用增量配置（关键修复）
 local config = wezterm.config_builder()
 
 -- 窗口设置
--- config.initial_cols = 150
--- config.initial_rows = 42
-
--- 全屏
-wezterm.on("gui-startup", function()
-	local tab, pane, window = wezterm.mux.spawn_window({})
-	window:gui_window():toggle_fullscreen()
-end)
-
+config.initial_cols = 150
+config.initial_rows = 42
 local border_color = "#f4dbd6"
 
 config.colors = {
@@ -40,7 +40,7 @@ config.window_decorations = "RESIZE"
 config.default_cursor_style = "BlinkingBar"
 config.color_scheme = "Nord (Gogh)"
 config.font = wezterm.font("JetBrains Mono", { weight = "Bold" })
-config.font_size = 15 -- 若仍有空白，可改为12或13（整数）
+config.font_size = 13 -- 若仍有空白，可改为12或13（整数）Windows: 13可完美填充全屏 TODO: MacOS:
 config.underline_thickness = "3px"
 config.underline_position = "-6px"
 
@@ -51,7 +51,7 @@ config.inactive_pane_hsb = {
 }
 
 -- StatusBar
-local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+local bar = wezterm.plugin.require("https://github.com/CarlRelax/bar.wezterm")
 bar.apply_to_config(config, {
 	position = "top",
 })
@@ -89,7 +89,8 @@ config.background = {
 	},
 }
 -- 快捷键配置（保留）
-config.leader = { key = "Space", mods = "ALT", timeout_milliseconds = 1000 }
+config.leader = { key = "Space", mods = "ALT", timeout_milliseconds = 1000 } -- MacOS
+-- config.leader = { key = "Space", mods = "CTRL|ALT", timeout_milliseconds = 1000 }  -- Windows
 config.keys = {
 	-- HACK 自定义Wrokspace和Pane模式(按键复杂)
 	-- {
