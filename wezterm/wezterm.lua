@@ -4,8 +4,15 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- 窗口设置
-config.initial_cols = 150
-config.initial_rows = 42
+-- config.initial_cols = 150
+-- config.initial_rows = 42
+
+-- 全屏
+wezterm.on("gui-startup", function()
+	local tab, pane, window = wezterm.mux.spawn_window({})
+	window:gui_window():toggle_fullscreen()
+end)
+
 local border_color = "#f4dbd6"
 
 config.colors = {
