@@ -54,6 +54,11 @@ config.inactive_pane_hsb = {
 local bar = wezterm.plugin.require("https://github.com/CarlRelax/bar.wezterm")
 bar.apply_to_config(config, {
 	position = "top",
+	modules = {
+		clock = {
+			format = "%H:%M:%S",
+		},
+	},
 })
 
 -- 核心：设置零内边距，消除WezTerm默认空白
