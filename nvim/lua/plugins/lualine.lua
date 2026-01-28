@@ -237,6 +237,7 @@ local colors = {
     ins_right({ "location" })
 
     ins_right({ "progress", color = { fg = colors.fg, gui = "bold" } })
+    ins_right({ require("opencode").statusline, color = { fg = colors.fg, gui = "bold" } })
 
     ins_right({
       function()
