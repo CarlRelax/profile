@@ -18,6 +18,7 @@ return {
         { "<leader><tab>", group = "tabs" },
         { "<leader>c", group = "code" },
         { "<leader>t", group = "todo" },
+        { "<leader>a", group = "avante" },
         -- { "<leader>l", group = "lsp" },
         -- { "<leader>ls", group = "lsp symbol" },
         -- { "<leader>lw", group = "lsp workspace" },
