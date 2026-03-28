@@ -94,7 +94,7 @@ config.background = {
 	},
 }
 -- 快捷键配置（保留）
-config.leader = { key = "Space", mods = "ALT", timeout_milliseconds = 1000 } -- MacOS
+config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 } -- MacOS
 -- config.leader = { key = "Space", mods = "CTRL|ALT", timeout_milliseconds = 1000 }  -- Windows
 config.keys = {
 	-- HACK 自定义Wrokspace和Pane模式(按键复杂)
