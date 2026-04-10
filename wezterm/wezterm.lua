@@ -30,7 +30,7 @@ config.window_frame = {
 	border_top_color = border_color,
 }
 config.adjust_window_size_when_changing_font_size = false
-
+config.default_prog = { "/bin/zsh", "-l" }
 -- 增量设置配置项，不再用config = {}覆盖
 config.native_macos_fullscreen_mode = true
 config.automatically_reload_config = true
@@ -125,6 +125,13 @@ config.keys = {
 	{ key = "a", mods = "LEADER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
 	{ key = "Tab", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(1) },
 	{ key = "Tab", mods = "LEADER|SHIFT", action = wezterm.action.SwitchWorkspaceRelative(-1) },
+	{ key = "LeftArrow", mods = "ALT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
+	{ key = "RightArrow", mods = "ALT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
+	{ key = "UpArrow", mods = "ALT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
+	{ key = "DownArrow", mods = "ALT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
+	{ key = "t", mods = "ALT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ key = "w", mods = "ALT", action = wezterm.action.CloseCurrentTab({ confirm = true }) },
+
 	{
 		key = "n",
 		mods = "LEADER",
@@ -176,5 +183,11 @@ table.insert(config.keys, {
 	mods = "",
 	action = wezterm.action.ToggleFullScreen,
 })
-
+for i = 1, 9 do
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "ALT",
+		action = wezterm.action.ActivateTab(i - 1),
+	})
+end
 return config
