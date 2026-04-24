@@ -86,6 +86,13 @@ local colors = {
 
     ins_left({
       function()
+        return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
+      end,
+      padding = { right = 1, left = 1 },
+      separator = { left = "", right = "" },
+    })
+    ins_left({
+      function()
         return "▊"
       end,
       color = { fg = colors.cyan }, -- Sets highlighting of component

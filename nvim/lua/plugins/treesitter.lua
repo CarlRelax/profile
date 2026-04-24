@@ -6,7 +6,7 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      ensure_installed = { "lua", "cpp" },
+      ensure_installed = { "lua", "cpp", "jsonc", "python" },
       auto_install = true,
       sync_install = false,
       ignore_install = {},

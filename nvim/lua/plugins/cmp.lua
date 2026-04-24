@@ -1,168 +1,183 @@
 return {
-  "saghen/blink.cmp",
-  event = { "InsertEnter", "CmdlineEnter" },
-  -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets" },
+  {
+    "saghen/blink.compat",
+    -- use v2.* for blink.cmp v1.*
+    version = "2.*",
+    -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+    lazy = true,
+    -- make sure to set opts so that lazy.nvim calls blink.compat's setup
+    opts = {},
+  },
+  {
+    "saghen/blink.cmp",
+    event = { "InsertEnter", "CmdlineEnter" },
+    -- optional: provides snippets for the snippet source
+    dependencies = { "rafamadriz/friendly-snippets" },
 
-  -- use a release tag to download pre-built binaries
-  version = "1.*",
-  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- If you use nix, you can build from source using latest nightly rust with:
-  -- build = 'nix run .#build-plugin',
+    -- use a release tag to download pre-built binaries
+    version = "1.*",
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
 
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-    -- 'super-tab' for mappings similar to vscode (tab to accept)
-    -- 'enter' for enter to accept
-    -- 'none' for no mappings
-    --
-    -- All presets have the following mappings:
-    -- C-space: Open menu or open docs if already open
-    -- C-n/C-p or Up/Down: Select next/previous item
-    -- C-e: Hide menu
-    -- C-k: Toggle signature help (if signature.enabled = true)
-    --
-    -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = {
-      preset = "none",
-      -- ["<C-I>"] = { "show", "show_documentation", "hide_documentation" },
-      ["<C-e>"] = { "hide", "fallback" },
-      ["`"] = { "accept", "fallback" },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      keymap = {
+        preset = "none",
+        -- ["<C-I>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
+        ["`"] = { "accept", "fallback" },
 
-      ["<Tab>"] = { "snippet_forward", "fallback" },
-      ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
 
-      ["<Up>"] = { "select_prev", "fallback" },
-      ["<Down>"] = { "select_next", "fallback" },
-      ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
-      ["<C-j>"] = { "select_next", "fallback_to_mappings" },
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-j>"] = { "select_next", "fallback_to_mappings" },
 
-      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
-      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
 
-      ["<C-i>"] = { "show_signature", "hide_signature", "fallback" },
-    },
+        ["<C-i>"] = { "show_signature", "hide_signature", "fallback" },
+      },
 
-    appearance = {
-      -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = "mono",
-    },
+      appearance = {
+        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = "mono",
+      },
 
-    -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = true } },
-    cmdline = {
-      enabled = true,
-      -- use 'inherit' to inherit mappings from top level `keymap` config
-      keymap = { preset = "inherit" },
-      sources = { "buffer", "cmdline", "path", "snippets", "lsp" },
+      -- (Default) Only show the documentation popup when manually triggered
+      completion = { documentation = { auto_show = true } },
+      cmdline = {
+        enabled = true,
+        -- use 'inherit' to inherit mappings from top level `keymap` config
+        keymap = { preset = "inherit" },
+        sources = { "buffer", "cmdline", "path", "snippets", "lsp" },
 
-      -- OR explicitly configure per cmd type
-      -- This ends up being equivalent to above since the sources disable themselves automatically
-      -- when not available. You may override their `enabled` functions via
-      -- `sources.providers.cmdline.override.enabled = function() return your_logic end`
+        -- OR explicitly configure per cmd type
+        -- This ends up being equivalent to above since the sources disable themselves automatically
+        -- when not available. You may override their `enabled` functions via
+        -- `sources.providers.cmdline.override.enabled = function() return your_logic end`
 
-      -- sources = function()
-      --   local type = vim.fn.getcmdtype()
-      --   -- Search forward and backward
-      --   if type == '/' or type == '?' then return { 'buffer' } end
-      --   -- Commands
-      --   if type == ':' or type == '@' then return { 'cmdline', 'buffer' } end
-      --   return {}
-      -- end,
+        -- sources = function()
+        --   local type = vim.fn.getcmdtype()
+        --   -- Search forward and backward
+        --   if type == '/' or type == '?' then return { 'buffer' } end
+        --   -- Commands
+        --   if type == ':' or type == '@' then return { 'cmdline', 'buffer' } end
+        --   return {}
+        -- end,
 
-      completion = {
-        trigger = {
-          show_on_blocked_trigger_characters = {},
-          show_on_x_blocked_trigger_characters = {},
-        },
-        list = {
-          selection = {
-            -- When `true`, will automatically select the first item in the completion list
-            preselect = true,
-            -- When `true`, inserts the completion item automatically when selecting it
-            auto_insert = true,
+        completion = {
+          trigger = {
+            show_on_blocked_trigger_characters = {},
+            show_on_x_blocked_trigger_characters = {},
           },
-        },
-        -- Whether to automatically show the window when new completion items are available
-        -- Default is false for cmdline, true for cmdwin (command-line window)
-        menu = {
-          auto_show = function(ctx, _)
-            return ctx.mode == "cmdline"
-          end,
-          draw = {
-            columns = {
-              { "kind_icon", gap = 1 },
-              { "label", "label_description", gap = 1 },
-              { "source_name" },
+          list = {
+            selection = {
+              -- When `true`, will automatically select the first item in the completion list
+              preselect = true,
+              -- When `true`, inserts the completion item automatically when selecting it
+              auto_insert = true,
             },
           },
-        },
-        -- Displays a preview of the selected item on the current line
-        ghost_text = { enabled = true },
-      },
-    },
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
-    sources = {
-      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-      providers = {
-        lazydev = {
-          name = "lazydev",
-          module = "lazydev.integrations.blink",
-          score_offset = 100,
-        },
-        lsp = {
-          name = "lsp",
-          enabled = true,
-          fallbacks = {},
-        },
-        snippets = {
-          name = "snippets",
-          opts = {
-            friendly_snippets = true,
+          -- Whether to automatically show the window when new completion items are available
+          -- Default is false for cmdline, true for cmdwin (command-line window)
+          menu = {
+            auto_show = function(ctx, _)
+              return ctx.mode == "cmdline"
+            end,
+            draw = {
+              columns = {
+                { "kind_icon", gap = 1 },
+                { "label", "label_description", gap = 1 },
+                { "source_name" },
+              },
+            },
+          },
+          -- Displays a preview of the selected item on the current line
+          ghost_text = {
+            enabled = function()
+              return vim.api.nvim_get_mode().mode ~= "c"
+            end,
           },
         },
-        buffer = {
-          name = "buffer",
-        },
-        avante_commands = {
-          name = "avante_commands",
-          module = "blink.compat.source",
-          score_offset = 90,
-          opts = {},
-        },
-        avante_mentions = {
-          name = "avante_mentions",
-          module = "blink.compat.source",
-          score_offset = 1000,
-          opts = {},
-        },
-        avante_shortcuts = {
-          name = "avante_shortcuts",
-          module = "blink.compat.source",
-          score_offset = 1000,
-          opts = {},
-        },
-        avante_files = {
-          name = "avante_files",
-          module = "blink.compat.source",
-          score_offset = 100,
-          opts = {},
+      },
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lazydev = {
+            name = "lazydev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+          lsp = {
+            name = "lsp",
+            enabled = true,
+            fallbacks = {},
+          },
+          snippets = {
+            name = "snippets",
+            opts = {
+              friendly_snippets = true,
+            },
+          },
+          buffer = {
+            name = "buffer",
+          },
+          avante_commands = {
+            name = "avante_commands",
+            module = "blink.compat.source",
+            score_offset = 90,
+            opts = {},
+          },
+          avante_mentions = {
+            name = "avante_mentions",
+            module = "blink.compat.source",
+            score_offset = 1000,
+            opts = {},
+          },
+          avante_shortcuts = {
+            name = "avante_shortcuts",
+            module = "blink.compat.source",
+            score_offset = 1000,
+            opts = {},
+          },
+          avante_files = {
+            name = "avante_files",
+            module = "blink.compat.source",
+            score_offset = 100,
+            opts = {},
+          },
         },
       },
-    },
 
-    -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-    -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-    -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-    --
-    -- See the fuzzy documentation for more information
-    fuzzy = { implementation = "prefer_rust_with_warning" },
-    signature = { enabled = true, window = { show_documentation = false } },
+      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
+      fuzzy = { implementation = "prefer_rust_with_warning" },
+      signature = { enabled = true, window = { show_documentation = false } },
+    },
+    opts_extend = { "sources.default" },
   },
-  opts_extend = { "sources.default" },
 }

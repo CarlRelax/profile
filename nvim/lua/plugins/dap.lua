@@ -52,7 +52,7 @@ return {
       ------------------------------------------------------------------
       -- 行内变量
       ------------------------------------------------------------------
-      require("nvim-dap-virtual-text").setup()
+      require("nvim-dap-virtual-text").setup({})
 
       ------------------------------------------------------------------
       -- Mason DAP（调试器安装）
@@ -125,13 +125,13 @@ return {
       vim.keymap.set("n", "<F11>", dap.step_into, { desc = "DAP Step Into" })
       vim.keymap.set("n", "<F12>", dap.step_out, { desc = "DAP Step Out" })
 
-      vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint, { desc = "DAP Toggle Breakpoint" })
-      vim.keymap.set("n", "<Leader>dB", function()
+      vim.keymap.set("n", "<Leader>Db", dap.toggle_breakpoint, { desc = "DAP Toggle Breakpoint" })
+      vim.keymap.set("n", "<Leader>DB", function()
         dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
       end, { desc = "DAP Conditional Breakpoint" })
 
-      vim.keymap.set("n", "<Leader>dr", dap.repl.open, { desc = "DAP REPL" })
-      vim.keymap.set("n", "<Leader>dl", dap.run_last, { desc = "DAP Run Last" })
+      vim.keymap.set("n", "<Leader>Dr", dap.repl.open, { desc = "DAP REPL" })
+      vim.keymap.set("n", "<Leader>Dl", dap.run_last, { desc = "DAP Run Last" })
     end,
   },
 }
